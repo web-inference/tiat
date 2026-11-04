@@ -31,6 +31,15 @@
 
   /* ---------- image slots: try jpg, jpeg, png, webp ---------- */
   var EXT = ["jpg", "png", "webp"];
+  /* ticker: repeat the notices so the strip is always full and loops without a gap */
+  (function () {
+    var run = $(".ticker-run"), track = $(".ticker-track");
+    if (!run || !track) return;
+    var base = run.innerHTML, w = run.scrollWidth || 1;
+    var copies = Math.max(1, Math.ceil(track.clientWidth / w));
+    run.innerHTML = new Array(copies * 2 + 1).join(base);
+  })();
+
   function loadSlot(el) {
     var base = el.getAttribute("data-img"), i = 0;
     if (!base) return;

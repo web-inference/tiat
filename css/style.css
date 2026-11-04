@@ -79,11 +79,12 @@ html[lang="en"] .en{display:inline!important}
 .ticker .container{display:flex;align-items:center;gap:12px;padding-block:6px}
 .ticker-label{flex:none;background:var(--red);color:#fff;font-weight:700;font-size:.9rem;padding:2px 12px;border-radius:5px}
 .ticker-track{overflow:hidden;flex:1;white-space:nowrap}
-.ticker-run{display:inline-flex;gap:48px;padding-left:100%;animation:tick 45s linear infinite}
+.ticker-run{display:inline-flex;animation:tick 40s linear infinite}
 .ticker-track:hover .ticker-run{animation-play-state:paused}
-.ticker-run a{color:var(--ink);font-size:.95rem}
+.ticker-run a{color:var(--ink);font-size:.95rem;margin-right:48px;flex:none}
 .ticker-run a::before{content:"\25C6";color:var(--saffron);margin-right:8px}
-@keyframes tick{to{transform:translateX(-100%)}}
+@keyframes tick{to{transform:translateX(-50%)}}
+.ph-fill .ph-label{display:none}
 
 /* image slots */
 .ph{position:relative;overflow:hidden;background:linear-gradient(135deg,#e3efe0,#cfe2d2);aspect-ratio:var(--r,4/3);border-radius:var(--radius)}
