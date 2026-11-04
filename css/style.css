@@ -403,3 +403,18 @@ footer.site li{margin-bottom:6px}
   #site-nav{display:none}
   #site-nav.open{display:block}
 }
+
+.m-tools{display:none}
+@media (max-width:820px){
+  .tb-right .lang,.tb-right .fsz{display:none}
+  .m-tools{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px 14px;padding:12px 16px;background:var(--green-d)}
+  .m-tools .lang{border-color:#fff}
+  .m-tools .fsz button{margin-left:0;margin-right:4px}
+}
+
+.u-login{display:none}
+@media (max-width:820px){
+  .tb-right{display:none!important}
+  .u-login{display:inline;flex:none;color:#fff;font-weight:600;font-size:.95rem;padding:6px 2px}
+  .u-login:hover{text-decoration:underline}
+}

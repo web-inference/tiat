@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>লগইন | টিএমএসএস ইনস্টিটিউট অব এগ্রিকালচার টেকনোলজি</title>
+<link rel="icon" href="images/logo.webp">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+<style>
+@media (max-width:600px){.lg-top b{display:none}.lg-top .back{margin-left:auto}}
+body{background:var(--soft);min-height:100vh;display:flex;flex-direction:column}
+.lg-top{background:#fff;border-bottom:4px solid var(--saffron)}
+.lg-top .container{display:flex;align-items:center;gap:12px;padding-block:10px}
+.lg-top .logo{width:56px;height:56px}
+.lg-top .back{margin-left:auto;font-weight:600}
+.lg-main{flex:1;display:grid;place-items:center;padding:32px 16px}
+.lg-card{width:min(100%,420px);background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:28px}
+.lg-card h1{font-size:1.6rem;color:var(--green-d);margin-bottom:6px}
+.lg-card p.s{color:var(--muted);margin-bottom:18px}
+.lg-card label{display:grid;gap:4px;font-weight:600;margin-bottom:14px}
+.lg-card input{border:1px solid #b9c9bd;border-radius:10px;padding:12px 14px;font:1rem var(--font)}
+.lg-card .btn{width:100%}
+.lg-ok{display:none;margin-top:14px;background:var(--green-l);color:var(--green-d);padding:10px 14px;border-radius:10px;font-weight:600}
+.lg-ok.show{display:block}
+.lg-lang{margin-left:8px;border-color:var(--green)}
+.lg-lang button{color:var(--ink)}
+.lg-lang button[aria-pressed="true"]{color:#1b1200}
+</style>
+</head>
+<body>
+<header class="lg-top"><div class="container">
+  <a class="logo" href="index.html" aria-label="TIAT"><img src="images/logo.webp" alt="TIAT logo"></a>
+  <b style="color:var(--green-d)"><span class="bn">টিএমএসএস ইনস্টিটিউট অব এগ্রিকালচার টেকনোলজি</span><span class="en">TMSS Institute of Agriculture Technology</span></b>
+  <a class="back" href="index.html">← <span class="bn">হোম</span><span class="en">Home</span></a>
+  <div class="lang lg-lang" role="group" aria-label="Language"><button type="button" data-lang="bn" aria-pressed="true">বাংলা</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
+</div></header>
+<main class="lg-main">
+  <form class="lg-card" id="lg">
+    <h1><span class="bn">লগইন</span><span class="en">Login</span></h1>
+    <p class="s"><span class="bn">শিক্ষার্থী আইডি বা মোবাইল নম্বর ও পাসওয়ার্ড দিন।</span><span class="en">Enter your student ID or mobile number and your password.</span></p>
+    <label><span class="bn">শিক্ষার্থী আইডি / মোবাইল নম্বর</span><span class="en">Student ID / mobile number</span><input id="u" required autocomplete="username"></label>
+    <label><span class="bn">পাসওয়ার্ড</span><span class="en">Password</span><input id="p" type="password" required autocomplete="current-password"></label>
+    <button class="btn btn-green" type="submit"><span class="bn">লগইন</span><span class="en">Login</span></button>
+    <div class="lg-ok" id="ok" role="status"><span class="bn">লগইন সুবিধা শীঘ্রই চালু হবে।</span><span class="en">Login will be available soon.</span></div>
+  </form>
+</main>
+<script>
+(function () {
+  var lang = "bn";
+  try { lang = localStorage.getItem("tiat-lang") || "bn"; } catch (e) {}
+  function set(l) {
+    document.documentElement.lang = l;
+    try { localStorage.setItem("tiat-lang", l); } catch (e) {}
+    Array.prototype.forEach.call(document.querySelectorAll(".lang button"), function (b) { b.setAttribute("aria-pressed", b.dataset.lang === l ? "true" : "false"); });
+  }
+  Array.prototype.forEach.call(document.querySelectorAll(".lang button"), function (b) { b.addEventListener("click", function () { set(b.dataset.lang); }); });
+  document.getElementById("lg").addEventListener("submit", function (e) { e.preventDefault(); document.getElementById("ok").classList.add("show"); });
+  set(lang);
+})();
+</script>
+</body>
+</html>
