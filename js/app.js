@@ -81,10 +81,24 @@
   });
 
   /* ---------- menu ---------- */
-  var menu = $("#menu"), tog = $(".nav-toggle");
-  tog.addEventListener("click", function () {
-    var o = menu.classList.toggle("open"); tog.setAttribute("aria-expanded", o ? "true" : "false");
+  var menu = $("#menu"), togs = $$(".nav-toggle"), siteNav = $("#site-nav");
+  togs.forEach(function (tog) {
+    tog.addEventListener("click", function () {
+      var o = menu.classList.toggle("open"); if (siteNav) siteNav.classList.toggle("open", o);
+      togs.forEach(function (t) { t.setAttribute("aria-expanded", o ? "true" : "false"); });
+    });
   });
+  /* account popup on phones: language, font size, student login, apply online */
+  var uBtn = $("#u-btn"), uPop = $("#tb-pop");
+  if (uBtn && uPop) {
+    uBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var o = uPop.classList.toggle("open"); uBtn.setAttribute("aria-expanded", o ? "true" : "false");
+    });
+    document.addEventListener("click", function (e) {
+      if (!uPop.contains(e.target) && e.target !== uBtn) { uPop.classList.remove("open"); uBtn.setAttribute("aria-expanded", "false"); }
+    });
+  }
 
   /* ---------- hero ---------- */
   var slides = $$(".slide"), dotsBox = $(".dots"), cur = 0, timer;
@@ -109,7 +123,7 @@
   /* ---------- dates ---------- */
   function fmtDate(iso, opt) { return new Date(iso + "T00:00:00").toLocaleDateString(loc(), opt); }
   function renderDates() {
-    $("#today-date").textContent = new Date().toLocaleDateString(loc(), { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+    $("#today-date").textContent = new Date().toLocaleDateString(loc(), window.matchMedia("(max-width:820px)").matches ? { day: "numeric", month: "short", year: "numeric" } : { weekday: "long", day: "numeric", month: "long", year: "numeric" });
     $$("[data-date]").forEach(function (el) {
       var iso = el.dataset.date;
       el.querySelector("b").textContent = nf(new Date(iso + "T00:00:00").getDate());

@@ -373,3 +373,28 @@ footer.site li{margin-bottom:6px}
   *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
   .ticker-track{overflow-x:auto}.ticker-run{padding-left:0}
 }
+
+
+/* mobile header: hotline, date and an account button; logo and menu icon; then the notices */
+.u-btn,.hb{display:none}
+@media (max-width:820px){
+  .topbar .container{flex-wrap:nowrap;justify-content:space-between;gap:10px;padding-block:7px;position:relative}
+  .tb-left{flex-wrap:nowrap;gap:12px;font-size:.82rem;min-width:0}
+  .tb-left>span{white-space:nowrap}
+  .u-btn{display:grid;place-items:center;flex:none;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.16);color:#fff;border:0;cursor:pointer}
+  .tb-right{display:none;position:absolute;right:12px;top:calc(100% + 6px);z-index:120;background:#fff;color:var(--ink);border-radius:16px;padding:14px;box-shadow:0 14px 34px rgba(0,0,0,.22);flex-direction:column;align-items:stretch;gap:12px;min-width:230px}
+  .tb-right.open{display:flex}
+  .tb-right a{color:var(--ink);font-weight:600;padding:6px 2px}
+  .tb-right .lang{border-color:var(--green);align-self:flex-start}
+  .tb-right .lang button{color:var(--ink)}
+  .tb-right .lang button[aria-pressed="true"]{color:#1b1200}
+  .tb-right .fsz button{color:var(--ink);border-color:#c9d6cd}
+  .header .brand,.header .nsda{display:none}
+  .header .container{justify-content:space-between;align-items:center;padding-block:8px}
+  .logo{width:60px;height:60px}
+  .hb{display:block;position:relative;width:46px;height:46px;border-radius:50%;border:0;background:var(--green-l);cursor:pointer;padding:0}
+  .hb i{position:absolute;left:13px;right:13px;height:2.5px;border-radius:2px;background:var(--green-d)}
+  .hb i:nth-child(1){top:16px}.hb i:nth-child(2){top:22px}.hb i:nth-child(3){top:28px}
+  #site-nav{display:none}
+  #site-nav.open{display:block}
+}
