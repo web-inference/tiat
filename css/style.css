@@ -436,3 +436,6 @@ footer.site li{margin-bottom:6px}
 .leader blockquote{margin:0;font-size:.97rem}
 @media (max-width:900px){.leaders{grid-template-columns:1fr 1fr}}
 @media (max-width:600px){.leaders{grid-template-columns:1fr}.leader .ph{aspect-ratio:1/1}}
+
+.leader .dg{display:grid;gap:2px;margin:0 0 10px;color:var(--muted);font-size:.9rem;line-height:1.4}
+.leader .nm:has(+ .dg){margin-bottom:4px}
