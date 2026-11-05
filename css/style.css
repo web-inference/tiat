@@ -447,3 +447,6 @@ footer.site li{margin-bottom:6px}
 .fc b{font-size:2.2rem;line-height:1;color:var(--green-d);font-variant-numeric:tabular-nums}
 .fc span{color:var(--ink);font-weight:600;font-size:1.05rem}
 @media (max-width:640px){.fcount{grid-template-columns:1fr}.fc b{font-size:1.9rem}}
+
+/* first hero slide: keep the people in view when the photo is cropped */
+.slide:first-child .ph img{object-position:46% 68%}
